@@ -7,6 +7,7 @@ import io.github.enbyex.core.util.Writable;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * @author soniex2
@@ -35,7 +36,22 @@ public class NBSSong implements Readable,
 
     public void setHeader(@Nonnull NBSHeader header) {
         this.header = header;
-        // TODO sync notes and header
+    }
+
+    public int length() {
+        return notes.length();
+    }
+
+    public void setNote(int tick, int layer, Optional<NBSNote> note) {
+        notes.setNote(tick, layer, note);
+    }
+
+    public Optional<NBSNote> getNote(int tick, int layer) {
+        return notes.getNote(tick, layer);
+    }
+
+    public int height() {
+        return notes.height();
     }
 
     @Override
